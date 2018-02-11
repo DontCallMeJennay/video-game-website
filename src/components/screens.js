@@ -107,6 +107,7 @@ class WatchScreen extends React.Component {
       text = (
         <div>
           <iframe
+            title="YouTube Video"
             src={video.embed.src}
             allowfullscreen="true"
             scrolling="no"

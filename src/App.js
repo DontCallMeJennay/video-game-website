@@ -4,34 +4,7 @@ import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } fro
 import { Dpad, Buttons } from './components/buttons'
 import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus'
 
-class CodeGif extends React.Component {
-  render() {
-    let giffyStyle = {
-      'width': '100%',
-      'height': '0',
-      'padding-bottom': '56%',
-      'position': 'relative'
-    }
-    
-    return (
-      <div style={giffyStyle}>
-        <iframe title="novelty background" src="https://giphy.com/embed/78iInGFo5B9D2" 
-          width="100%" 
-          height="100%" 
-          style="position:absolute" 
-          frameBorder="0" 
-          class="giphy-embed" 
-          allowFullScreen>
-        </iframe>
-      </div>
-    )
-  }
-}
-
 class TopScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     //console.log("TopScreen: ", this.props);
     let top = null;
@@ -76,9 +49,6 @@ class TopScreen extends React.Component {
               watch={this.props.watch}
               topkey={this.props.topview} />;
     }
-        if (this.props.view === "bonus") {
-      top = <CodeGif />;
-    }
     return (
       <div className="screen" id="topscreen">
         {top}
@@ -88,9 +58,6 @@ class TopScreen extends React.Component {
 }
 
 class BottomScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     //console.log("BottomScreen: ", this.props);
     let view = null;
