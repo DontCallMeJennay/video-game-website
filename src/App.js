@@ -117,7 +117,8 @@ class App extends React.Component {
       records: recordObj,
       watch: watchObj,
       topview: 0,
-      view: "home"
+      view: "home",
+      theme: "src/css/style.css"
     };
     this.setMenu = this.setMenu.bind(this);
     this.setTopView = this.setTopView.bind(this);
@@ -131,9 +132,13 @@ class App extends React.Component {
       topview: 0
     });
   }
+  setTheme(str) {
+    this.setState({theme: str });
+  }
   render() {
     return (
       <main>
+        <link rel="stylesheet" href={this.state.theme} />
         <div className="top half" id="tophalf">
           <TopScreen
             contacts={this.state.contacts}
@@ -174,7 +179,7 @@ class App extends React.Component {
           />
 
         </div>
-        <AudioHandler />
+        <AudioHandler changeTheme={this.setTheme}/>
       </main>
     );
   }

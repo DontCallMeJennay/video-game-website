@@ -14,7 +14,10 @@ export default class AudioHandler extends React.Component {
     }
 }
 
-$("document").ready(() => {
+// Problem: How do I get the jQuery code to tell the React code to change the theme property?
+// I probably have to rewrite this in plain JS...
+
+$(document).ready(() => {
     let sequence = "";
     $(".square, .round, .ctrl, .lr").on("click", el => {
         sequence += el.currentTarget.value.toString();
@@ -23,6 +26,7 @@ $("document").ready(() => {
         if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
             let kon = document.getElementById("kon");
             kon.play();
+            this.props.changeTheme("src/css/dk.css");
             sequence = "";
         }
         if (sequence.search("UpSelectLeftRightAAB") > -1) {
