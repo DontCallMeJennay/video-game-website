@@ -13,7 +13,7 @@ class Dpad extends React.Component {
                     id="upbtn"
                     value="Up"
                     onClick={e => this.props.changeMenu("games")}
-                ><ReactTooltip />
+                ><ReactTooltip effect="solid"/>
                     <i className="fa fa-gamepad" />
                 </button>
                 <br />
@@ -23,7 +23,7 @@ class Dpad extends React.Component {
                     id="leftbtn"
                     value="Left"
                     onClick={e => this.props.changeMenu("events")}
-                ><ReactTooltip />
+                >
                     <i className="fa fa-calendar" />
                 </button>
                 <button className="square visible">
@@ -35,7 +35,7 @@ class Dpad extends React.Component {
                     id="rightbtn"
                     value="Right"
                     onClick={e => this.props.changeMenu("watch")}
-                ><ReactTooltip />
+                >
                     <i className="fa fa-video-camera" />
                 </button>
                 <br />
@@ -45,7 +45,7 @@ class Dpad extends React.Component {
                     id="downbtn"
                     value="Down"
                     onClick={e => this.props.changeMenu("contact")}
-                ><ReactTooltip />
+                >
                     <i className="fa fa-comment" />
                 </button>
             </div>
@@ -65,7 +65,7 @@ class Buttons extends React.Component {
                         id="xbtn"
                         value="X"
                         onClick={e => this.props.changeMenu("home")}
-                    ><ReactTooltip />
+                    >
                         <i className="fa fa-home" aria-hidden="true" />
                     </button>
                     <br />
@@ -75,7 +75,7 @@ class Buttons extends React.Component {
                         id="ybtn"
                         value="Y"
                         onClick={e => this.props.changeMenu("records")}
-                    ><ReactTooltip />
+                    >
                         <i className="fa fa-trophy" aria-hidden="true" />
                     </button>
                     <i className="fa fa-stop invisible" />
