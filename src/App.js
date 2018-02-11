@@ -8,46 +8,48 @@ class TopScreen extends React.Component {
   render() {
     //console.log("TopScreen: ", this.props);
     let top = null;
-    if (this.props.view === "contact") {
-      top = (
-        <ContactScreen
-          contacts={this.props.contacts}
-          topkey={this.props.topview}
-        />
-      );
-    }
-    if (this.props.view === "events") {
-      top = (
-        <EventScreen 
-          events={this.props.events} 
-          topkey={this.props.topview} 
+    switch (this.props.view) {
+      case "contact":
+        top = (
+          <ContactScreen
+            contacts={this.props.contacts}
+            topkey={this.props.topview}
           />
-      );
-    }
-    if (this.props.view === "games") {
-      top = <GameScreen 
-              games={this.props.games} 
-              topkey={this.props.topview} />;
-    }
-    if (this.props.view === "home") {
-      top = (
-      <div className="content" id="giftarget">
-          <h2>Hi!</h2>
-          <p>SGD is a classically trained gamer who inexplicably makes a living by playing silly games and making dumb jokes online. Find videos, events, personal records, and everything else about him by pushing the buttons below.</p>
+        ); break;
+      case "events":
+        top = (
+          <EventScreen
+            events={this.props.events}
+            topkey={this.props.topview}
+          />
+        ); break;
+      case "games":
+        top = (
+          <GameScreen
+            games={this.props.games}
+            topkey={this.props.topview} />
+        ); break;
+      case "records":
+        top = (
+          <RecordScreen
+            records={this.props.records}
+            topkey={this.props.topview}
+          />
+        ); break;
+      case "watch":
+        top = (
+          top = <WatchScreen
+            watch={this.props.watch}
+            topkey={this.props.topview} />
+        );
+        break;
+      default:
+        top = (
+          <div className="content" id="giftarget">
+            <h2>Hi!</h2>
+            <p>SGD is a classically trained gamer who inexplicably makes a living by playing silly games and making dumb jokes online. Find videos, events, personal records, and everything else about him by pushing the buttons below.</p>
           </div>);
-    }
-    if (this.props.view === "records") {
-      top = (
-        <RecordScreen
-          records={this.props.records}
-          topkey={this.props.topview}
-        />
-      );
-    }
-    if (this.props.view === "watch") {
-      top = <WatchScreen 
-              watch={this.props.watch}
-              topkey={this.props.topview} />;
+        break;
     }
     return (
       <div className="screen" id="topscreen">
@@ -85,10 +87,10 @@ class BottomScreen extends React.Component {
         />
       );
     if (this.props.view === "watch")
-      view = <WatchMenu 
-               watch={this.props.watch}
-               changeView={this.props.changeTopView} 
-               />;
+      view = <WatchMenu
+        watch={this.props.watch}
+        changeView={this.props.changeTopView}
+      />;
     if (this.props.view === "records")
       view = (
         <RecordsMenu
@@ -113,7 +115,7 @@ class App extends React.Component {
       events: eventObj,
       games: gameObj,
       records: recordObj,
-      watch: watchObj,  
+      watch: watchObj,
       topview: 0,
       view: "home"
     };
@@ -124,7 +126,7 @@ class App extends React.Component {
     this.setState({ topview: num });
   }
   setMenu(str) {
-    this.setState({ 
+    this.setState({
       view: str,
       topview: 0
     });
@@ -149,7 +151,7 @@ class App extends React.Component {
           <button className="lr left" id="rbtn" value="R">R</button>
         </div>
         <div className="bottom half flex-row" id="bottomhalf">
-                    
+
           <Dpad
             view={this.state.view}
             changeTopView={this.setTopView}
@@ -170,7 +172,7 @@ class App extends React.Component {
             changeTopView={this.setTopView}
             changeMenu={this.setMenu}
           />
-          
+
         </div>
       </main>
     );
@@ -184,7 +186,7 @@ $("document").ready(() => {
   $(".square, .round, .ctrl, .lr").on("click", el => {
     sequence += el.currentTarget.value.toString();
     console.log(sequence);
-    
+
     if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
       let kon = document.getElementById("kon");
       kon.play();
@@ -204,7 +206,7 @@ $("document").ready(() => {
       let dkc = document.getElementById("dkc");
       dkc.play();
       sequence = "";
-    }    
+    }
     if (sequence.length > 100) {
       sequence = "";
     }
@@ -213,7 +215,6 @@ $("document").ready(() => {
 
 //TMNT2 (NES): BABAUpDownBALeftRightBAStart
 
-//<a href="https://giphy.com/gifs/games-nes-contra-78iInGFo5B9D2">via GIPHY</a></p>
 
 const eventObj = [
   {
@@ -301,7 +302,7 @@ const recordObj = [
 ];
 
 const watchObj = [
-  {    
+  {
     content: `Streams, races, highlight reels, and blooper videos!`
   },
   {
