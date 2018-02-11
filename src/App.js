@@ -47,7 +47,7 @@ class TopScreen extends React.Component {
         top = (
           <div className="content" id="giftarget">
             <h2>Hi!</h2>
-            <p>SGD is a classically trained gamer who inexplicably makes a living by playing silly games and making dumb jokes online. Find videos, events, personal records, and everything else about him by pushing the buttons below.</p>
+            <p>SGD is a classically trained gamer who inexplicably makes a living by playing silly games and making dumb jokes online. Find videos, events, personal records, and everything else about him by pushing the buttons below.</p>            
           </div>);
         break;
     }
