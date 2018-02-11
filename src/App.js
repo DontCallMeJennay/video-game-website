@@ -1,8 +1,8 @@
 import React from 'react';
-import $ from 'jquery';
-import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens'
-import { Dpad, Buttons } from './components/buttons'
-import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus'
+import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
+import { Dpad, Buttons } from './components/buttons';
+import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
+import AudioHandler from './components/audio';
 
 class TopScreen extends React.Component {
   render() {
@@ -174,6 +174,7 @@ class App extends React.Component {
           />
 
         </div>
+        <AudioHandler />
       </main>
     );
   }
@@ -181,37 +182,6 @@ class App extends React.Component {
 
 export default App;
 
-$("document").ready(() => {
-  let sequence = "";
-  $(".square, .round, .ctrl, .lr").on("click", el => {
-    sequence += el.currentTarget.value.toString();
-    console.log(sequence);
-
-    if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
-      let kon = document.getElementById("kon");
-      kon.play();
-      sequence = "";
-    }
-    if (sequence.search("UpSelectLeftRightAAB") > -1) {
-      let nemo = document.getElementById("nemo");
-      nemo.play();
-      sequence = "";
-    }
-    if (sequence.search("DownRUpLYB") > -1) {
-      let sf2 = document.getElementById("sf2");
-      sf2.play();
-      sequence = "";
-    }
-    if (sequence.search("BARRAL") > -1) {
-      let dkc = document.getElementById("dkc");
-      dkc.play();
-      sequence = "";
-    }
-    if (sequence.length > 100) {
-      sequence = "";
-    }
-  });
-});
 
 //TMNT2 (NES): BABAUpDownBALeftRightBAStart
 
