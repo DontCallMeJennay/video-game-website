@@ -1,0 +1,244 @@
+html,
+body {
+  background-color: black;
+  color: white;
+}
+
+iframe {
+  height: 29vh;
+  margin: 0 auto;
+  max-width: 50vw;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10% auto;
+  text-align: center;
+}
+
+.hinge {
+  height: 5vh;
+  background-color: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
+  background: linear-gradient(to bottom, #111, black);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+}
+
+.half {
+  height: 45vh;
+  margin: 0 auto;
+}
+
+.top {
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(2%, #111), to(black));
+  background: linear-gradient(to top, black, #111 2%, black);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row-wrap;
+          flex-direction: row-wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.screen {
+  background-color: white;
+  background: -webkit-gradient(linear, right bottom, left top, from(#aac), color-stop(15%, #fff), color-stop(20%, #ccd), color-stop(50%, #fff), color-stop(70%, #fff), to(#aac));
+  background: linear-gradient(to top left, #aac, #fff 15%, #ccd 20%, #fff 50%, #fff 70%, #aac);
+  color: black;
+  height: 30vh;
+  margin: 5vh auto;
+  width: 50vw;
+  overflow-y: auto;
+}
+.screen h2 {
+  text-align: center;
+}
+.screen iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+.controls {
+  margin: 0 auto;
+  width: 20vw;
+  text-align: center;
+}
+
+.start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 3em;
+  margin-bottom: 0;
+}
+
+button {
+  background-color: black;
+  border-color: #999;
+  -webkit-box-shadow: 1px 2px #333;
+          box-shadow: 1px 2px #333;
+  color: #999;
+  cursor: pointer;
+}
+
+.square {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 black;
+          box-shadow: 0 0 black;
+  padding: 0.5em 0.75em;
+}
+
+.round {
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
+  background: linear-gradient(to bottom, #111, black);
+  border: 1px solid #777;
+  border-radius: 50px;
+  font-weight: bold;
+  margin: 0.25em 0.5em;
+  padding: 0.5em 0.75em;
+}
+
+.ctrl {
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
+  background: linear-gradient(to bottom, #111, black);
+  border-radius: 50px;
+  font-size: 0.75em;
+  font-variant: small-caps;
+  padding: 0 1em;
+}
+
+.lr {
+  background-color: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
+  background: linear-gradient(to bottom, #111, black);
+  border: 3px outset #777;
+  border-radius: 10px;
+  color: #777;
+  font-weight: bold;
+  height: 5vh;
+  margin: 0 2vw;
+  width: 10vw;
+}
+
+.invisible {
+  border: none;
+  color: black;
+}
+
+.visible {
+  border: none;
+  color: #444;
+}
+
+#upbtn {
+  border-bottom: none;
+  margin-top: 1em;
+}
+
+#downbtn {
+  border-top: none;
+  margin-bottom: 1em;
+}
+
+#leftbtn {
+  border-right: none;
+  margin-left: 1em;
+}
+
+#rightbtn {
+  border-left: none;
+  margin-right: 1em;
+}
+
+.content {
+  color: green;
+  padding: 0 1em;
+}
+.content h1,
+.content h2 {
+  margin: 0.5em;
+}
+
+.linklist {
+  color: blue;
+  margin: 0 auto;
+}
+.linklist li {
+  cursor: pointer;
+  padding: 0.5em 2em;
+  text-decoration: underline;
+}
+.linklist li:first-child {
+  display: none;
+}
+.linklist p {
+  text-align: center;
+}
+
+.linklist li:hover,
+.linklist li:focus {
+  background-color: green;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.games img {
+  float: left;
+  max-width: 20vw;
+  padding: 1em;
+  padidng-left: 0;
+  padding-top: 0;
+}
