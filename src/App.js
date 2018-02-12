@@ -3,6 +3,7 @@ import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } fro
 import { Dpad, Buttons } from './components/buttons';
 import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
 import AudioHandler from './components/audio';
+import $ from 'jquery';
 
 class TopScreen extends React.Component {
   render() {
@@ -117,8 +118,7 @@ class App extends React.Component {
       records: recordObj,
       watch: watchObj,
       topview: 0,
-      view: "home",
-      theme: "src/css/style.css"
+      view: "home"
     };
     this.setMenu = this.setMenu.bind(this);
     this.setTopView = this.setTopView.bind(this);
@@ -132,8 +132,44 @@ class App extends React.Component {
       topview: 0
     });
   }
-  setTheme(str) {
-    this.setState({theme: str });
+  componentDidMount() {
+    let sequence = "";
+    $(".square, .round, .ctrl, .lr").on("click", el => {
+        sequence += el.currentTarget.value.toString();
+        console.log(sequence);
+  
+        if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
+            let kon = document.getElementById("kon");
+            kon.play();
+            sequence = "";
+        }
+        if (sequence.search("UpSelectLeftRightAAB") > -1) {
+            let nemo = document.getElementById("nemo");
+            nemo.play();
+            sequence = "";
+        }
+        if (sequence.search("DownRUpLYB") > -1) {
+            let sf2 = document.getElementById("sf2");
+            sf2.play();
+            sequence = "";
+        }
+        if (sequence.search("BARRAL") > -1) {
+            let dkc = document.getElementById("dkc");
+            dkc.play();
+            $("#tophalf").css({
+              "background": "linear-gradient(#884, #FF2 5%, #FF2 95%, #884)",
+              "backgroundColor": "#FF2"
+            });
+            $("#hinge, #bottomhalf").css({
+              //"background": "none",
+              //"backgroundColor": "#770"
+            });
+            sequence = "";
+        }
+        if (sequence.length > 100) {
+            sequence = "";
+        }
+    });
   }
   render() {
     return (
@@ -151,7 +187,7 @@ class App extends React.Component {
             changeMenu={this.setMenu}
           />
         </div>
-        <div className="hinge">
+        <div className="hinge" id="hinge">
           <button className="lr right" id="lbtn" value="L">L </button>
           <button className="lr left" id="rbtn" value="R">R</button>
         </div>
@@ -297,3 +333,7 @@ const watchObj = [
     }
   }
 ]
+
+$(document).ready(() => {
+ 
+});
