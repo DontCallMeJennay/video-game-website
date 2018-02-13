@@ -1,9 +1,13 @@
 import React from 'react';
+import Redux from 'redux';
 import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
 import { Dpad, Buttons } from './components/buttons';
 import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
+const store = require('./store');
+const actions = require('./actions/index');
+
 
 class TopScreen extends React.Component {
   render() {
