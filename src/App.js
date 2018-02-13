@@ -1,5 +1,4 @@
 import React from 'react';
-import Redux from 'redux';
 import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
 import { Dpad, Buttons } from './components/buttons';
 import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
@@ -124,26 +123,27 @@ class App extends React.Component {
       view: "home"
     };
     this.setMenu = this.setMenu.bind(this);
-    this.setTopView = this.setTopView.bind(this);    
+    this.setTopView = this.setTopView.bind(this);
+    store.subscribe(this.listenForViewChange.bind(this));
   }
   setTopView(num) {
     this.setState({ topview: num });
   }
   setMenu(str) {
-    console.log(str);
     store.dispatch(actions.changeMenu(str));
+    console.log("App dispatch changeMenu()");
   }
-  listenForChange() {
+  listenForViewChange() {
     let prevState = this.state.view;
-    let newState = store.getState();
+    console.log("Prev: ", prevState);
+    let newState = store.getState().view;
+    console.log("New: ", newState);
     if(prevState !== newState) {
-      this.setState(newState);      
+      this.setState({view: newState.view});      
     }
-    console.log(this.state.view);
 
   }
   componentDidMount() {
-    this.listenForChange();
     let sequence = "";
     $(".square, .round, .ctrl, .lr").on("click", el => {
         sequence += el.currentTarget.value.toString();
@@ -344,7 +344,3 @@ const watchObj = [
     }
   }
 ]
-
-$(document).ready(() => {
- 
-});

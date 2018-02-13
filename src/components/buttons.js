@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-import store from '../store'
 import './menus';
 import './screens';
-const actions = require('../actions/index');
 
 class Dpad extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="controls">
