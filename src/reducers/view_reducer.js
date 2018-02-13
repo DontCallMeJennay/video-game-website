@@ -1,9 +1,17 @@
+const types = require('../actions/action_types');
+
 var initialState = {
     view: "home"
 }
 
 var viewReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case types.CHANGE_MENU:
+        console.log("CHANGE_MENU: ", Object.assign({}, state, action));
+            return Object.assign({}, state, action.str);
+        default:
+            return state;
+    }
 };
 
-module.export = viewReducer;
+module.exports = viewReducer;

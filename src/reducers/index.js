@@ -5,4 +5,4 @@ const rootReducer = redux.combineReducers({
     view: viewReducer,
 });
 
-module.export(rootReducer);
+module.exports = rootReducer;

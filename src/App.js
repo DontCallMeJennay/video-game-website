@@ -5,9 +5,8 @@ import { Dpad, Buttons } from './components/buttons';
 import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
-const store = require('./store');
+import store from './store';
 const actions = require('./actions/index');
-
 
 class TopScreen extends React.Component {
   render() {
@@ -125,18 +124,26 @@ class App extends React.Component {
       view: "home"
     };
     this.setMenu = this.setMenu.bind(this);
-    this.setTopView = this.setTopView.bind(this);
+    this.setTopView = this.setTopView.bind(this);    
   }
   setTopView(num) {
     this.setState({ topview: num });
   }
   setMenu(str) {
-    this.setState({
-      view: str,
-      topview: 0
-    });
+    console.log(str);
+    store.dispatch(actions.changeMenu(str));
+  }
+  listenForChange() {
+    let prevState = this.state.view;
+    let newState = store.getState();
+    if(prevState !== newState) {
+      this.setState(newState);      
+    }
+    console.log(this.state.view);
+
   }
   componentDidMount() {
+    this.listenForChange();
     let sequence = "";
     $(".square, .round, .ctrl, .lr").on("click", el => {
         sequence += el.currentTarget.value.toString();
