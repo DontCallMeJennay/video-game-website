@@ -1,110 +1,24 @@
 import React from 'react';
-import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
+//import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
 import { Dpad, Buttons } from './components/buttons';
-import { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu } from './components/menus';
+import { Menu, TextMenu } from './components/menus';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
 import store from './store';
 const actions = require('./actions/index');
 
-class TopScreen extends React.Component {
+class DoubleScreen extends React.Component {
   render() {
-    //console.log("TopScreen: ", this.props);
-    let top = null;
-    switch (this.props.view) {
-      case "contact":
-        top = (
-          <ContactScreen
-            contacts={this.props.contacts}
-            topkey={this.props.topview}
-          />
-        ); break;
-      case "events":
-        top = (
-          <EventScreen
-            events={this.props.events}
-            topkey={this.props.topview}
-          />
-        ); break;
-      case "games":
-        top = (
-          <GameScreen
-            games={this.props.games}
-            topkey={this.props.topview} />
-        ); break;
-      case "records":
-        top = (
-          <RecordScreen
-            records={this.props.records}
-            topkey={this.props.topview}
-          />
-        ); break;
-      case "watch":
-        top = (
-          top = <WatchScreen
-            watch={this.props.watch}
-            topkey={this.props.topview} />
-        );
-        break;
-      default:
-        top = (
-          <div className="content" id="giftarget">
-            <h2>Hi!</h2>
-            <p>SGD is a classically trained gamer who inexplicably makes a living by playing silly games and making dumb jokes online. Find videos, events, personal records, and everything else about him by pushing the buttons below.</p>            
-          </div>);
-        break;
-    }
     return (
-      <div className="screen" id="topscreen">
-        {top}
-      </div>
-    );
-  }
-}
+      <main>
+        <div className="screen" id="topscreen">
 
-class BottomScreen extends React.Component {
-  render() {
-    //console.log("BottomScreen: ", this.props);
-    let view = null;
-    if (this.props.view === "home")
-      view = <HomeMenu changeView={this.props.changeTopView} />;
-    if (this.props.view === "events")
-      view = (
-        <EventsMenu
-          events={this.props.events}
-          changeView={this.props.changeTopView}
-        />
-      );
-    if (this.props.view === "games")
-      view = (
-        <GamesMenu
-          games={this.props.games}
-          changeView={this.props.changeTopView}
-        />
-      );
-    if (this.props.view === "contact")
-      view = (
-        <ContactMenu
-          contacts={this.props.contacts}
-          changeView={this.props.changeTopView}
-        />
-      );
-    if (this.props.view === "watch")
-      view = <WatchMenu
-        watch={this.props.watch}
-        changeView={this.props.changeTopView}
-      />;
-    if (this.props.view === "records")
-      view = (
-        <RecordsMenu
-          records={this.props.records}
-          changeView={this.props.changeTopView}
-        />
-      );
-    return (
-      <div className="screen" id="bottomscreen">
-        {view}
-      </div>
+        </div>
+        <div className="hinge" id="hinge"></div>
+        <div className="screen" id="bottomscreen">
+
+        </div>
+      </main>
     );
   }
 }
@@ -138,48 +52,48 @@ class App extends React.Component {
     console.log("Prev: ", prevState);
     let newState = store.getState().view;
     console.log("New: ", newState);
-    if(prevState !== newState) {
-      this.setState({view: newState.view});      
+    if (prevState !== newState) {
+      this.setState({ view: newState.view });
     }
 
   }
   componentDidMount() {
     let sequence = "";
     $(".square, .round, .ctrl, .lr").on("click", el => {
-        sequence += el.currentTarget.value.toString();
-        console.log(sequence);
-  
-        if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
-            let kon = document.getElementById("kon");
-            kon.play();
-            sequence = "";
-        }
-        if (sequence.search("UpSelectLeftRightAAB") > -1) {
-            let nemo = document.getElementById("nemo");
-            nemo.play();
-            sequence = "";
-        }
-        if (sequence.search("DownRUpLYB") > -1) {
-            let sf2 = document.getElementById("sf2");
-            sf2.play();
-            sequence = "";
-        }
-        if (sequence.search("BARRAL") > -1) {
-            let dkc = document.getElementById("dkc");
-            dkc.play();
-            $("#tophalf").css({
-              "background": "linear-gradient(#884, #FF2 5%, #FF2 95%, #884)",
-              "backgroundColor": "#FF2"
-            });
-            $("#hinge, #bottomhalf").css({
-              //"background": "none",
-              //"backgroundColor": "#770"
-            });
-            sequence = "";
-        }
-        if (sequence.length > 100) {
-            sequence = "";
-        }
+      sequence += el.currentTarget.value.toString();
+      console.log(sequence);
+
+      if (sequence.search("UpUpDownDownLeftRightLeftRightBAStart") > -1) {
+        let kon = document.getElementById("kon");
+        kon.play();
+        sequence = "";
+      }
+      if (sequence.search("UpSelectLeftRightAAB") > -1) {
+        let nemo = document.getElementById("nemo");
+        nemo.play();
+        sequence = "";
+      }
+      if (sequence.search("DownRUpLYB") > -1) {
+        let sf2 = document.getElementById("sf2");
+        sf2.play();
+        sequence = "";
+      }
+      if (sequence.search("BARRAL") > -1) {
+        let dkc = document.getElementById("dkc");
+        dkc.play();
+        $("#tophalf").css({
+          "background": "linear-gradient(#884, #FF2 5%, #FF2 95%, #884)",
+          "backgroundColor": "#FF2"
+        });
+        $("#hinge, #bottomhalf").css({
+          //"background": "none",
+          //"backgroundColor": "#770"
+        });
+        sequence = "";
+      }
+      if (sequence.length > 100) {
+        sequence = "";
+      }
     });
   }
   render() {
@@ -187,7 +101,7 @@ class App extends React.Component {
       <main>
         <link rel="stylesheet" href={this.state.theme} />
         <div className="top half" id="tophalf">
-          <TopScreen
+          <DoubleScreen
             contacts={this.state.contacts}
             events={this.state.events}
             games={this.state.games}
@@ -209,16 +123,6 @@ class App extends React.Component {
             changeTopView={this.setTopView}
             changeMenu={this.setMenu}
           />
-          <BottomScreen
-            view={this.state.view}
-            changeMenu={this.setMenu}
-            changeTopView={this.setTopView}
-            contacts={this.state.contacts}
-            events={this.state.events}
-            games={this.state.games}
-            records={this.state.records}
-            watch={this.state.watch}
-          />
           <Buttons
             view={this.state.view}
             changeTopView={this.setTopView}
@@ -226,7 +130,7 @@ class App extends React.Component {
           />
 
         </div>
-        <AudioHandler changeTheme={this.setTheme}/>
+        <AudioHandler changeTheme={this.setTheme} />
       </main>
     );
   }

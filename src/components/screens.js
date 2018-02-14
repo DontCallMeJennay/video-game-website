@@ -2,57 +2,7 @@ import React from 'react';
 import './buttons';
 import './menus';
 
-class ContactScreen extends React.Component {
-  render() {
-    //console.log("ContactScreen: ", this.props);
-    let k = this.props.topkey;
-    let contact = this.props.contacts[k];
-    let text = null;
-    if (contact.content) {
-      text = (
-        <div className="content">
-          <h2>{contact.title}</h2>
-          <p>{contact.content}</p>
-        </div>
-      );
-    } else {
-      text = (
-        <div className="column">
-          <a href={contact.url}>
-            <i className={contact.fa} />
-            <br />
-            {contact.name}</a>
-        </div>
-      );
-    }
-    return <div>{text}</div>;
-  }
-}
-
-class EventScreen extends React.Component {
-  render() {
-    //console.log("EventScreen: ", this.props);
-    let k = this.props.topkey;
-    let event = this.props.events[k];
-    let text = null;
-    if (event.content) {
-      text = (
-        <div className="content">
-          <p>{event.content}</p>
-        </div>
-      );
-    } else {
-      text = (
-        <div className="content">
-          <p>{event.info}</p>
-        </div>
-      );
-    }
-    return <div>{text}</div>;
-  }
-}
-
-class GameScreen extends React.Component {
+class ArticleScreen extends React.Component {
   render() {
     //console.log("GameScreen: ", this.props);
     let k = this.props.topkey;
@@ -80,7 +30,7 @@ class GameScreen extends React.Component {
   }
 }
 
-class RecordScreen extends React.Component {
+class ListScreen extends React.Component {
   render() {
     //console.log("RecordScreen: ", this.props);
     return (
@@ -97,7 +47,7 @@ class RecordScreen extends React.Component {
   }
 }
 
-class WatchScreen extends React.Component {
+class EmbedScreen extends React.Component {
   render() {
     //console.log("WatchScreen: ", this.props);
     let k = this.props.topkey;
@@ -134,4 +84,4 @@ class WatchScreen extends React.Component {
   }
 }
 
-export { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen };
+export { ArticleScreen, EmbedScreen, ListScreen };
