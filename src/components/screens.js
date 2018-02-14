@@ -4,7 +4,6 @@ import './menus';
 
 class ArticleScreen extends React.Component {
   render() {
-    //console.log("GameScreen: ", this.props);
     let k = this.props.topkey;
     let game = this.props.games[k];
     let text = null;
@@ -32,7 +31,6 @@ class ArticleScreen extends React.Component {
 
 class ListScreen extends React.Component {
   render() {
-    //console.log("RecordScreen: ", this.props);
     return (
       <div className="content">
         <ul>
@@ -49,7 +47,6 @@ class ListScreen extends React.Component {
 
 class EmbedScreen extends React.Component {
   render() {
-    //console.log("WatchScreen: ", this.props);
     let k = this.props.topkey;
     let video = this.props.watch[k];
     let text = null;

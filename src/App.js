@@ -1,5 +1,7 @@
+//Main content: Games, Events, Contact, Records, Videos, Home 
+
 import React from 'react';
-//import { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen } from './components/screens';
+import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
 import { Dpad, Buttons } from './components/buttons';
 import { Menu, TextMenu } from './components/menus';
 import AudioHandler from './components/audio';
@@ -8,17 +10,36 @@ import store from './store';
 const actions = require('./actions/index');
 
 class DoubleScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.setMenu = this.setMenu.bind(this);
+    this.setScreen = this.setScreen.bind(this);
+  }
+  setScreen(str) {
+    store.dispatch(actions.changeScreen(str));
+  }
+  setMenu(str) {
+    store.dispatch(actions.changeMenu(str));
+  }
   render() {
     return (
-      <main>
+      <div>
         <div className="screen" id="topscreen">
 
         </div>
-        <div className="hinge" id="hinge"></div>
-        <div className="screen" id="bottomscreen">
-
+        <div className="hinge" id="hinge">
+          <button className="lr right" id="lbtn" value="L">L </button>
+          <button className="lr left" id="rbtn" value="R">R</button>
         </div>
-      </main>
+
+        <div className="bottom half flex-row">
+          <Dpad/>
+          <div className="screen" id="bottomscreen">
+
+          </div>
+          <Buttons/>
+        </div>
+      </div>
     );
   }
 }
@@ -36,16 +57,8 @@ class App extends React.Component {
       topview: 0,
       view: "home"
     };
-    this.setMenu = this.setMenu.bind(this);
-    this.setTopView = this.setTopView.bind(this);
+
     store.subscribe(this.listenForViewChange.bind(this));
-  }
-  setTopView(num) {
-    this.setState({ topview: num });
-  }
-  setMenu(str) {
-    store.dispatch(actions.changeMenu(str));
-    console.log("App dispatch changeMenu()");
   }
   listenForViewChange() {
     let prevState = this.state.view;
@@ -99,8 +112,6 @@ class App extends React.Component {
   render() {
     return (
       <main>
-        <link rel="stylesheet" href={this.state.theme} />
-        <div className="top half" id="tophalf">
           <DoubleScreen
             contacts={this.state.contacts}
             events={this.state.events}
@@ -111,25 +122,6 @@ class App extends React.Component {
             topview={this.state.topview}
             changeMenu={this.setMenu}
           />
-        </div>
-        <div className="hinge" id="hinge">
-          <button className="lr right" id="lbtn" value="L">L </button>
-          <button className="lr left" id="rbtn" value="R">R</button>
-        </div>
-        <div className="bottom half flex-row" id="bottomhalf">
-
-          <Dpad
-            view={this.state.view}
-            changeTopView={this.setTopView}
-            changeMenu={this.setMenu}
-          />
-          <Buttons
-            view={this.state.view}
-            changeTopView={this.setTopView}
-            changeMenu={this.setMenu}
-          />
-
-        </div>
         <AudioHandler changeTheme={this.setTheme} />
       </main>
     );
