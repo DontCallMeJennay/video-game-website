@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import './menus';
 import './screens';
 
 class Dpad extends React.Component {
     render() {
+        //console.log("Dpad props: ", this.props);
         return (
             <Router>
                 <div className="controls">

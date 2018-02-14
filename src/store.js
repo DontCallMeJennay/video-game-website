@@ -1,6 +1,6 @@
-const reducers = require('./reducers/index.js');
+const Reducer = require('./reducers/index.js');
 const redux = require('redux');
 
-var Store = redux.createStore(reducers);
+var Store = redux.createStore(Reducer);
 
 module.exports = Store;

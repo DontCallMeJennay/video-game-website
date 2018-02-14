@@ -1,3 +1,4 @@
 module.exports = {
-    CHANGE_MENU: "CHANGE_MENU"
+    CHANGE_MENU: "CHANGE_MENU",
+    CHANGE_SCREEN: "CHANGE_SCREEN"
 }

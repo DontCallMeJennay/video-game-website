@@ -1,9 +1,9 @@
 //Main content: Games, Events, Contact, Records, Videos, Home 
 
 import React from 'react';
-import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
+//import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
 import { Dpad, Buttons } from './components/buttons';
-import { Menu, TextMenu } from './components/menus';
+//import { Menu, TextMenu } from './components/menus';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
 import store from './store';
@@ -15,8 +15,8 @@ class DoubleScreen extends React.Component {
     this.setMenu = this.setMenu.bind(this);
     this.setScreen = this.setScreen.bind(this);
   }
-  setScreen(str) {
-    store.dispatch(actions.changeScreen(str));
+  setScreen(num) {
+    store.dispatch(actions.changeScreen(num));
   }
   setMenu(str) {
     store.dispatch(actions.changeMenu(str));
@@ -24,8 +24,10 @@ class DoubleScreen extends React.Component {
   render() {
     return (
       <div>
-        <div className="screen" id="topscreen">
+        <div className="top half">
+          <div className="screen" id="topscreen">
 
+          </div>
         </div>
         <div className="hinge" id="hinge">
           <button className="lr right" id="lbtn" value="L">L </button>
@@ -33,11 +35,11 @@ class DoubleScreen extends React.Component {
         </div>
 
         <div className="bottom half flex-row">
-          <Dpad/>
+          <Dpad changeMenu={this.setMenu} />
           <div className="screen" id="bottomscreen">
 
           </div>
-          <Buttons/>
+          <Buttons changeMenu={this.setMenu}/>
         </div>
       </div>
     );
@@ -55,20 +57,16 @@ class App extends React.Component {
       records: recordObj,
       watch: watchObj,
       topview: 0,
-      view: "home"
+      menu: "home"
     };
-
-    store.subscribe(this.listenForViewChange.bind(this));
+    store.subscribe(this.listenForMenuChange.bind(this));
   }
-  listenForViewChange() {
-    let prevState = this.state.view;
-    console.log("Prev: ", prevState);
-    let newState = store.getState().view;
-    console.log("New: ", newState);
-    if (prevState !== newState) {
-      this.setState({ view: newState.view });
+  listenForMenuChange() {
+    let prevState = this.state.menu;
+    let newState = store.getState();
+    if (prevState.menu !== newState.menu) {
+      this.setState(newState);
     }
-
   }
   componentDidMount() {
     let sequence = "";
@@ -112,16 +110,16 @@ class App extends React.Component {
   render() {
     return (
       <main>
-          <DoubleScreen
-            contacts={this.state.contacts}
-            events={this.state.events}
-            games={this.state.games}
-            records={this.state.records}
-            watch={this.state.watch}
-            view={this.state.view}
-            topview={this.state.topview}
-            changeMenu={this.setMenu}
-          />
+        <DoubleScreen
+          contacts={this.state.contacts}
+          events={this.state.events}
+          games={this.state.games}
+          records={this.state.records}
+          watch={this.state.watch}
+          view={this.state.view}
+          topview={this.state.topview}
+          changeMenu={this.setMenu}
+        />
         <AudioHandler changeTheme={this.setTheme} />
       </main>
     );
