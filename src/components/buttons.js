@@ -8,7 +8,6 @@ class Dpad extends React.Component {
     render() {
         //console.log("Dpad props: ", this.props);
         return (
-            <Router>
                 <div className="controls">
                     <button
                         className="square"
@@ -52,7 +51,6 @@ class Dpad extends React.Component {
                         <i className="fa fa-comment" />
                     </button>
                 </div>
-            </Router>
         );
     }
 }

@@ -1,4 +1,3 @@
-const redux = require('redux');
 const types = require('../actions/action_types');
 const Data = require('../data');
 

@@ -12,10 +12,3 @@ export default class AudioHandler extends React.Component {
         )
     }
 }
-
-// Problem: How do I get the jQuery code to tell the React code to change the theme property?
-// I probably have to rewrite this in plain JS...
-
-/*
-
-*/
