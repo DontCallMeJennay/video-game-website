@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import './menus';
 import './screens';
 
@@ -46,7 +45,7 @@ class Dpad extends React.Component {
                         data-tip="Contact information"
                         id="downbtn"
                         value="Down"
-                        onClick={e => this.props.changeMenu("contact")}
+                        onClick={e => this.props.changeMenu("contacts")}
                     >
                         <i className="fa fa-comment" />
                     </button>
@@ -59,10 +58,8 @@ class Buttons extends React.Component {
 
     render() {
         return (
-            <Router>
                 <div className="controls">
                     <div className="buttons">
-                        <Link to="/">
                         <button
                             className="round"
                             data-tip="Home"
@@ -72,9 +69,7 @@ class Buttons extends React.Component {
                         >
                             <i className="fa fa-home" aria-hidden="true" />
                         </button>
-                        </Link>
                         <br />
-                        <Link to="/pb">
                         <button
                             className="round"
                             data-tip="Personal Bests and Awards"
@@ -88,7 +83,6 @@ class Buttons extends React.Component {
                         <button className="round" id="abtn" value="A">
                             A
             </button>
-            </Link>
                         <br />
 
                         <button className="round" id="bbtn" value="B">
@@ -105,7 +99,6 @@ class Buttons extends React.Component {
                     </div>
 
                 </div>
-            </Router>
         );
     }
 }

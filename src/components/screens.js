@@ -4,8 +4,9 @@ import './menus';
 
 class ArticleScreen extends React.Component {
   render() {
-    let k = this.props.topkey;
-    let game = this.props.games[k];
+    console.log("Showing ArticleScreen");
+    let k = this.props.data.topview;
+    let game = this.props.data.games[k];
     let text = null;
     if (game.img) {
       text = (
@@ -31,50 +32,52 @@ class ArticleScreen extends React.Component {
 
 class ListScreen extends React.Component {
   render() {
+    console.log("Showing ListScreen");
+    let topic = this.props.data.menu;
+    let div = null;
+    if (this.props.data[topic]) {
+      let k = this.props.data.topview;  
+      let content = this.props.data[topic][k];
+      let contactsDiv = (<p><i className={content.fa}><a href={content.url}>{content.name}</a></i></p>);
+      let contentDiv = (<p> {content.content} </p>);
+      topic === "contacts" ? div = contactsDiv : div = contentDiv;
+    } else {
+      div = (<div>{this.props.data.meu}</div>);
+    }
     return (
       <div className="content">
-        <ul>
-          {this.props.records.map((item, index) => (
-            <li key={index}>
-              {item.title}, {item.category}: {item.time}
-            </li>
-          ))}
-        </ul>
-      </div>
+        {div}
+        </div>
     );
   }
 }
 
 class EmbedScreen extends React.Component {
   render() {
-    let k = this.props.topkey;
-    let video = this.props.watch[k];
+    let k = this.props.data.topview;
+    let video = this.props.data.menu;
+    video === "watch" ? video = this.props.data.watch[k] : video = this.props.data.records[k];
     let text = null;
     if (video.embed) {
       text = (
-        <div>
           <iframe
             title="YouTube Video"
             src={video.embed.src}
-            allowfullscreen="true"
+            allowFullScreen="true"
             scrolling="no"
             gesture="media">
           </iframe>
-        </div>
       );
     } else if (video.link) {
-      text = (<div>
+      text = (
         <p className="content">
-          <a href={video.link}>Go to {video.title}</a>
-        </p>
-      </div>)
+          <a href={video.link}>Go to {video.bottom}</a>
+        </p>)
     } else {
       text = (
-        <div className="content">
-          <p>
+          <p className="content">
             {video.content}
           </p>
-        </div>
       );
     }
     return <div>{text}</div>;

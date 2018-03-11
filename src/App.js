@@ -1,8 +1,8 @@
 //Main content: Games, Events, Contact, Records, Videos, Home 
 
 import React from 'react';
-//import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
-//import { Menu, TextMenu } from './components/menus';
+import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
+import { Menu } from './components/menus';
 import { Dpad, Buttons } from './components/buttons';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
@@ -21,13 +21,23 @@ class DoubleScreen extends React.Component {
   }
   setMenu(str) {
     store.dispatch(actions.changeMenu(str));
+    store.dispatch(actions.changeScreen("0"));
   }
   render() {
+    let screen = null;
+    let menu = this.props.data.menu;
+    if (menu === "watch" || menu === "records") {
+      screen = (<EmbedScreen data={this.props.data} />);
+    }
+    else if (menu === "games") {
+      screen = (<ArticleScreen data={this.props.data} />);
+    }
+    else screen = (<ListScreen data={this.props.data} />);
     return (
       <div>
         <div className="top half">
           <div className="screen" id="topscreen">
-
+            {screen}
           </div>
         </div>
         <div className="hinge" id="hinge">
@@ -36,11 +46,17 @@ class DoubleScreen extends React.Component {
         </div>
 
         <div className="bottom half flex-row">
-          <Dpad changeMenu={this.setMenu} />
+          <Dpad
+            changeMenu={this.setMenu}
+            changeScreen={this.setScreen} />
           <div className="screen" id="bottomscreen">
-
+            <Menu
+              data={this.props.data}
+              changeScreen={this.setScreen} />
           </div>
-          <Buttons changeMenu={this.setMenu} />
+          <Buttons
+            changeMenu={this.setMenu}
+            changeScreen={this.setScreen} />
         </div>
       </div>
     );
@@ -52,11 +68,19 @@ class App extends React.Component {
     super(props);
     this.state = store.getState();
     store.subscribe(this.listenForMenuChange.bind(this));
+    store.subscribe(this.listenForScreenChange.bind(this));
   }
   listenForMenuChange() {
     let prevState = this.state.menu;
     let newState = store.getState();
     if (prevState.menu !== newState.menu) {
+      this.setState(newState);
+    }
+  }
+  listenForScreenChange() {
+    let prevState = this.state.topview;
+    let newState = store.getState();
+    if (prevState.topview !== newState.topview) {
       this.setState(newState);
     }
   }
@@ -100,11 +124,12 @@ class App extends React.Component {
     });
   }
   render() {
+    console.log(this.state);
     return (
       <main>
         <DoubleScreen
-          topview={this.state.topview}
-          menu={this.state.menu}
+
+          data={this.state}
         />
         <AudioHandler changeTheme={this.setTheme} />
       </main>

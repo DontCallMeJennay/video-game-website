@@ -4,18 +4,24 @@ import './buttons';
 
 
 class Menu extends React.Component {
-    render() {
-        return (
-            <div className="linklist">
-                <ul>
-                    {this.props.contacts.map((item, index) => (
-                        <li key={index} onClick={e => this.props.changeView(index)}>
-                            {item.bottom}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+    render() {        
+        let menu = this.props.data.menu;
+        if (menu === "home") {
+            return (<TextMenu />);
+        }
+        else {
+            return (
+                <div className="linklist">
+                    <ul>
+                        {this.props.data[menu].map((item, index) => (
+                            <li key={index} onClick={e => this.props.changeScreen(index)}>
+                                {item.bottom}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
     }
 }
 
