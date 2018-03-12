@@ -1,6 +1,5 @@
 const types = require('../actions/action_types');
 const Data = require('../data');
-const defaultTheme = './css/style.css';
 
 const initialState = {
     bonus: "",
@@ -10,9 +9,9 @@ const initialState = {
     records: Data.recordObj,
     watch: Data.watchObj,
     sound: true,
-    style: defaultTheme,
     topview: 0,
     menu: "home",
+    theme: "default"
 }
 
 function Reducer(state = initialState, action) {

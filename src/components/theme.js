@@ -56,6 +56,6 @@ export default class ThemeHandler extends React.Component {
         });
     }
     render() {
-        return (<link rel="stylesheet" type="text/css" href={this.props.style} />);
+        return (<br />);
     }
 }

@@ -4,6 +4,8 @@ import AudioHandler from './components/audio';
 import ThemeHandler from './components/theme';
 import store from './store';
 
+import './css/style.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,9 +38,10 @@ class App extends React.Component {
   render() {
     return (
       <main>
-        <ThemeHandler 
+        <link rel="stylesheet" type="text/css" href={this.state.style} />
+        <ThemeHandler
           sound={this.state.sound}
-          style={this.state.style} />
+          />
         <DoubleScreen
           data={this.state}
         />
