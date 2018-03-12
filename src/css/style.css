@@ -7,6 +7,12 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+h1,
+h2,
+h3 {
+    font-family: "Mina", sans-serif;
+}
+
 iframe {
     height: 39vh;
     width: 49vw;
@@ -94,8 +100,6 @@ li {
 
 .screen {
     background-color: white;
-    background: -webkit-gradient(linear, right bottom, left top, from(#aac), color-stop(15%, #fff), color-stop(20%, #ccd), color-stop(50%, #fff), color-stop(70%, #fff), to(#aac));
-    background: linear-gradient(to top left, #aac, #fff 15%, #ccd 20%, #fff 50%, #fff 70%, #aac);
     color: black;
     height: 30vh;
     margin: 5vh auto;
@@ -106,10 +110,6 @@ li {
 
 #topscreen {
     height: 40vh;
-}
-
-.screen h2 {
-    text-align: center;
 }
 
 .screen iframe {
@@ -221,17 +221,10 @@ button {
 }
 
 .content {
-    color: green;
     padding: 0 1em;
 }
 
-.content h1,
-.content h2 {
-    margin: 0.5em;
-}
-
 .linklist {
-    color: blue;
     font-family: "Mina", serif;
     margin: 0 auto;
 }

@@ -7,6 +7,7 @@ const actions = require('../actions/index');
 const dpadImg = require('../img/dpad.png');
 const buttonImg = require('../img/buttons.png');
 
+
 export default class DoubleScreen extends React.Component {
     constructor(props) {
       super(props);
@@ -24,8 +25,8 @@ export default class DoubleScreen extends React.Component {
       let screen = null;
       let menu = this.props.data.menu;
       if(menu === "home") {
-        screen = (<div>
-          <h1 className="content">Welcome!</h1>
+        screen = (<div className="content">
+          <h1>Welcome!</h1>
           <p>This is a "portfolio" site for someone who plays retro video games competitively.</p>
           <p>Push the <img className='tiny' src={dpadImg} alt='D-pad icon' /> and <img className='tiny' src={buttonImg} alt='buttons icon' /> buttons below to navigate the site.</p>
           <p>(Links and other interactions are generally located on the bottom half of the "console", and the selected content is displayed on the top screen.)</p>

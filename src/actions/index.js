@@ -15,3 +15,10 @@ exports.changeScreen = (topview) => {
         topview
     }
 }
+
+exports.changeTheme = (theme) => {
+    return {
+        type: types.CHANGE_THEME,
+        theme
+    }
+}

@@ -44,7 +44,7 @@ class Menu extends React.Component {
 
 class TextMenu extends React.Component {
     render() {
-        return <h2> Welcome to Some Gamer Dude's console!</h2>;
+        return <h2 className="center"> Welcome to Some Gamer Dude's console!</h2>;
     }
 }
 

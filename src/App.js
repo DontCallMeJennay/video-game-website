@@ -1,8 +1,7 @@
-//Main content: Games, Events, Contact, Records, Videos, Home 
-
 import React from 'react';
 import DoubleScreen from './components/doublescreen';
 import AudioHandler from './components/audio';
+import ThemeHandler from './components/theme';
 import $ from 'jquery';
 import store from './store';
 
@@ -12,6 +11,7 @@ class App extends React.Component {
     this.state = store.getState();
     store.subscribe(this.listenForMenuChange.bind(this));
     store.subscribe(this.listenForScreenChange.bind(this));
+    store.subscribe(this.listenForThemeChange.bind(this));
   }
   listenForMenuChange() {
     let prevState = this.state.menu;
@@ -24,6 +24,13 @@ class App extends React.Component {
     let prevState = this.state.topview;
     let newState = store.getState();
     if (prevState.topview !== newState.topview) {
+      this.setState(newState);
+    }
+  }
+  listenForThemeChange() {
+    let prevState = this.state.theme;
+    let newState = store.getState();
+    if (prevState.theme !== newState.theme) {
       this.setState(newState);
     }
   }
@@ -69,20 +76,16 @@ class App extends React.Component {
     });
   }
   render() {
-    console.log(this.state);
     return (
       <main>
+ 
         <DoubleScreen
-
           data={this.state}
         />
-        <AudioHandler changeTheme={this.setTheme} />
+        <AudioHandler />
       </main>
     );
   }
 }
 
 export default App;
-
-
-//TMNT2 (NES): BABAUpDownBALeftRightBAStart
