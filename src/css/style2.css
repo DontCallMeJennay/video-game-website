@@ -1,0 +1,12 @@
+.top,
+.hinge,
+.bottom {
+    background: none;
+    background-color: yellow;
+}
+
+* {
+    color: red;
+    font-weight: bold;
+    font-variant: small-caps;
+}
