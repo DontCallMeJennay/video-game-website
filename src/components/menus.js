@@ -3,95 +3,49 @@ import './screens';
 import './buttons';
 
 
-class ContactMenu extends React.Component {
-    render() {
-        //console.log("ContactMenu: ", this.props);
-        return (
-            <div className="linklist">
-                <ul>
-                    {this.props.contacts.map((item, index) => (
-                        <li key={index} onClick={e => this.props.changeView(index)}>
-                            {item.bottom}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-}
-
-class EventsMenu extends React.Component {
+class Menu extends React.Component {
     constructor(props) {
         super(props);
-        this.handleView = this.handleView.bind(this);
+        this.playSound = this.playSound.bind(this);
+        this.screenChange = this.screenChange.bind(this);
     }
-    handleView(text) {
-        this.props.changeView(text);
+    screenChange(index, el) {
+        if(this.props.data.sound) el.play();
+        this.props.changeScreen(index);
     }
-    render() {
-        //console.log("EventsMenu: ", this.props);
-        return (
-            <div>
-                <ul className="linklist">
-                    {this.props.events.map((item, index) => (
-                        <li key={index} onClick={e => this.handleView(index)}>
-                            {item.bottom}{" "}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+    playSound(el) {
+        if(this.props.data.sound) el.play();
     }
-}
-
-class GamesMenu extends React.Component {
-    render() {
-        //console.log("GamesMenu: ", this.props);
-        return (
-            <div className="linklist">
-                <ul>
-                    {this.props.games.map((item, index) => (
-                        <li key={index} onClick={e => this.props.changeView(index)}>
-                            {item.bottom}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+    render() {    
+        const beep = document.getElementById("beep");
+        const click = document.getElementById("click");    
+        let menu = this.props.data.menu;
+        if (menu === "home") {
+            return (<TextMenu />);
+        }
+        else {
+            return (
+                <div className="linklist">
+                    <h3 className="content">{this.props.data[menu][0].bottom}</h3>
+                    <ul>
+                        {this.props.data[menu].map((item, index) => (
+                            <li key={index} 
+                                onClick={e => this.screenChange(index, beep)}
+                                onMouseOver={e => this.playSound(click)}>
+                                {item.bottom} {item.time}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
     }
 }
 
-class RecordsMenu extends React.Component {
+class TextMenu extends React.Component {
     render() {
-        // console.log("RecordScreen: ", this.props);
-        return (
-            <div>
-                <h2> Personal Bests</h2>
-            </div>
-        );
+        return <h2 className="center"> Welcome to Some Gamer Dude's console!</h2>;
     }
 }
 
-class WatchMenu extends React.Component {
-    render() {
-        return (
-            <div className="linklist">
-                <ul>
-                    {this.props.watch.map((item, index) => (
-                        <li key={index} onClick={e => this.props.changeView(index)}>
-                            {item.title}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-}
-
-class HomeMenu extends React.Component {
-    render() {
-        return <h2> Welcome to Some Gamer Dude's console!</h2>;
-    }
-}
-
-export { ContactMenu, EventsMenu, GamesMenu, RecordsMenu, WatchMenu, HomeMenu };
+export { Menu, TextMenu };

@@ -8,14 +8,9 @@ export default class AudioHandler extends React.Component {
                 <audio id="kon" src="https://jennicorbus.com/audio/stage-clear.mp3" type="audio/mp3"></audio>
                 <audio id="dkc" src="https://jennicorbus.com/audio/tagged.mp3" type="audio/mp3"></audio>
                 <audio id="nemo" src="https://jennicorbus.com/audio/nemo.mp3" type="audio/mp3"></audio>
+                <audio id="beep" src="https://jennicorbus.com/audio/select.wav" type="audio/wav"></audio>
+                <audio id="click" src="https://jennicorbus.com/audio/mouse-click.mp3" type="audio/mp3"></audio>
             </div>
         )
     }
 }
-
-// Problem: How do I get the jQuery code to tell the React code to change the theme property?
-// I probably have to rewrite this in plain JS...
-
-/*
-
-*/

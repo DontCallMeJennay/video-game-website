@@ -2,61 +2,11 @@ import React from 'react';
 import './buttons';
 import './menus';
 
-class ContactScreen extends React.Component {
+class ArticleScreen extends React.Component {
   render() {
-    //console.log("ContactScreen: ", this.props);
-    let k = this.props.topkey;
-    let contact = this.props.contacts[k];
-    let text = null;
-    if (contact.content) {
-      text = (
-        <div className="content">
-          <h2>{contact.title}</h2>
-          <p>{contact.content}</p>
-        </div>
-      );
-    } else {
-      text = (
-        <div className="column">
-          <a href={contact.url}>
-            <i className={contact.fa} />
-            <br />
-            {contact.name}</a>
-        </div>
-      );
-    }
-    return <div>{text}</div>;
-  }
-}
-
-class EventScreen extends React.Component {
-  render() {
-    //console.log("EventScreen: ", this.props);
-    let k = this.props.topkey;
-    let event = this.props.events[k];
-    let text = null;
-    if (event.content) {
-      text = (
-        <div className="content">
-          <p>{event.content}</p>
-        </div>
-      );
-    } else {
-      text = (
-        <div className="content">
-          <p>{event.info}</p>
-        </div>
-      );
-    }
-    return <div>{text}</div>;
-  }
-}
-
-class GameScreen extends React.Component {
-  render() {
-    //console.log("GameScreen: ", this.props);
-    let k = this.props.topkey;
-    let game = this.props.games[k];
+    console.log("Showing ArticleScreen");
+    let k = this.props.data.topview;
+    let game = this.props.data.games[k];
     let text = null;
     if (game.img) {
       text = (
@@ -65,14 +15,16 @@ class GameScreen extends React.Component {
             <img src={game.img} alt={game.bottom + " box image"} />
           </div>
           <div>
-            <p>{game.content}</p>
+            <p>{game.content1}</p>
+            <p>{game.content2}</p>
           </div>
         </div>
       );
     } else {
       text = (
         <div className="content">
-          <p>{game.content}</p>
+          <h2>{game.title}</h2>
+          <p>{game.content1}</p>
         </div>
       );
     }
@@ -80,53 +32,54 @@ class GameScreen extends React.Component {
   }
 }
 
-class RecordScreen extends React.Component {
+class ListScreen extends React.Component {
   render() {
-    //console.log("RecordScreen: ", this.props);
+    console.log("Showing ListScreen");
+    let topic = this.props.data.menu;
+    let div = null;
+    if (this.props.data[topic]) {
+      let k = this.props.data.topview;
+      let content = this.props.data[topic][k];
+      let contactDiv = (<p><i className={content.fa}></i>  <a href={content.url}>{content.name}</a></p>);
+      let contentDiv = (<div><h2>{content.title}</h2><p> {content.content} </p></div>);
+      topic === "contact" && this.props.data.topview > 0 ? div = contactDiv : div = contentDiv;
+    } else {
+      div = (<div>{this.props.data.menu}</div>);
+    }
     return (
       <div className="content">
-        <ul>
-          {this.props.records.map((item, index) => (
-            <li key={index}>
-              {item.title}, {item.category}: {item.time}
-            </li>
-          ))}
-        </ul>
+        {div}
       </div>
     );
   }
 }
 
-class WatchScreen extends React.Component {
+class EmbedScreen extends React.Component {
   render() {
-    //console.log("WatchScreen: ", this.props);
-    let k = this.props.topkey;
-    let video = this.props.watch[k];
+    let k = this.props.data.topview;
+    let video = this.props.data.menu;
+    video === "watch" ? video = this.props.data.watch[k] : video = this.props.data.records[k];
     let text = null;
     if (video.embed) {
       text = (
-        <div>
-          <iframe
-            title="YouTube Video"
-            src={video.embed.src}
-            allowfullscreen="true"
-            scrolling="no"
-            gesture="media">
-          </iframe>
-        </div>
+        <iframe
+          title="YouTube Video"
+          src={video.embed.src}
+          allowFullScreen="true"
+          scrolling="no"
+          gesture="media">
+        </iframe>
       );
     } else if (video.link) {
-      text = (<div>
+      text = (
         <p className="content">
-          <a href={video.link}>Go to {video.title}</a>
-        </p>
-      </div>)
+          <a href={video.link}>Go to {video.bottom}</a>
+        </p>)
     } else {
       text = (
         <div className="content">
-          <p>
-            {video.content}
-          </p>
+          <h2>{video.title}</h2>
+          <p>{video.content}</p>
         </div>
       );
     }
@@ -134,4 +87,4 @@ class WatchScreen extends React.Component {
   }
 }
 
-export { ContactScreen, EventScreen, GameScreen, RecordScreen, WatchScreen };
+export { ArticleScreen, EmbedScreen, ListScreen };

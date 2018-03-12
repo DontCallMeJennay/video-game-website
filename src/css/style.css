@@ -4,12 +4,20 @@ body {
     color: white;
     max-width: 1000px;
     margin: 0 auto;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Mina", sans-serif;
 }
 
 iframe {
-    height: 29vh;
+    height: 39vh;
+    width: 49vw;
     margin: 0 auto;
-    max-width: 50vw;
+    padding: 0;
 }
 
 ul {
@@ -59,20 +67,22 @@ li {
     margin: 0 auto;
 }
 
-.half {
-    height: 45vh;
-    margin: 0 auto;
-}
-
 .top {
     background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(2%, #111), to(black));
     background: linear-gradient(to top, black, #111 2%, black);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 55vh;
+    margin: 0 auto;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+}
+
+.bottom {
+    height: 35vh;
+    margin: 0 auto;
 }
 
 .flex-row {
@@ -90,8 +100,6 @@ li {
 
 .screen {
     background-color: white;
-    background: -webkit-gradient(linear, right bottom, left top, from(#aac), color-stop(15%, #fff), color-stop(20%, #ccd), color-stop(50%, #fff), color-stop(70%, #fff), to(#aac));
-    background: linear-gradient(to top left, #aac, #fff 15%, #ccd 20%, #fff 50%, #fff 70%, #aac);
     color: black;
     height: 30vh;
     margin: 5vh auto;
@@ -100,8 +108,8 @@ li {
     overflow-y: auto;
 }
 
-.screen h2 {
-    text-align: center;
+#topscreen {
+    height: 40vh;
 }
 
 .screen iframe {
@@ -213,17 +221,11 @@ button {
 }
 
 .content {
-    color: green;
     padding: 0 1em;
 }
 
-.content h1,
-.content h2 {
-    margin: 0.5em;
-}
-
 .linklist {
-    color: blue;
+    font-family: "Mina", serif;
     margin: 0 auto;
 }
 
@@ -250,12 +252,19 @@ button {
 
 .games img {
     float: left;
-    max-width: 20vw;
+    max-height: 30vh;
     padding: 1em;
-    padidng-left: 0;
+    padding-left: 0;
     padding-top: 0;
 }
 
 .dk {
     background-color: yellow !important;
+}
+
+.tiny {
+    height: 1em;
+    width: 1em;
+    margin: 0;
+    padding: 0;
 }
