@@ -45,7 +45,7 @@ class Dpad extends React.Component {
                         data-tip="Contact information"
                         id="downbtn"
                         value="Down"
-                        onClick={e => this.props.changeMenu("contacts")}
+                        onClick={e => this.props.changeMenu("contact")}
                     >
                         <i className="fa fa-comment" />
                     </button>

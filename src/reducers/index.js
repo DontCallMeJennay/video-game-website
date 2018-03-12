@@ -3,11 +3,12 @@ const Data = require('../data');
 
 const initialState = {
     bonus: "",
-    contacts: Data.contactObj,
+    contact: Data.contactObj,
     events: Data.eventObj,
     games: Data.gameObj,
     records: Data.recordObj,
     watch: Data.watchObj,
+    sound: true,
     topview: 0,
     menu: "home"
 }

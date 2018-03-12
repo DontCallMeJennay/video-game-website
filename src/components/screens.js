@@ -38,11 +38,11 @@ class ListScreen extends React.Component {
     if (this.props.data[topic]) {
       let k = this.props.data.topview;  
       let content = this.props.data[topic][k];
-      let contactsDiv = (<p><i className={content.fa}><a href={content.url}>{content.name}</a></i></p>);
+      let contactDiv = (<p><i className={content.fa}><a href={content.url}>{content.name}</a></i></p>);
       let contentDiv = (<p> {content.content} </p>);
-      topic === "contacts" ? div = contactsDiv : div = contentDiv;
+      topic === "contact" && this.props.data.topview > 0 ? div = contactDiv : div = contentDiv;
     } else {
-      div = (<div>{this.props.data.meu}</div>);
+      div = (<div>{this.props.data.menu}</div>);
     }
     return (
       <div className="content">

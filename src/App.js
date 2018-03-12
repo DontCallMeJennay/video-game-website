@@ -1,67 +1,10 @@
 //Main content: Games, Events, Contact, Records, Videos, Home 
 
 import React from 'react';
-import { ArticleScreen, EmbedScreen, ListScreen } from './components/screens';
-import { Menu } from './components/menus';
-import { Dpad, Buttons } from './components/buttons';
+import DoubleScreen from './components/doublescreen';
 import AudioHandler from './components/audio';
 import $ from 'jquery';
 import store from './store';
-const actions = require('./actions/index');
-
-
-class DoubleScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.setMenu = this.setMenu.bind(this);
-    this.setScreen = this.setScreen.bind(this);
-  }
-  setScreen(num) {
-    store.dispatch(actions.changeScreen(num));
-  }
-  setMenu(str) {
-    store.dispatch(actions.changeMenu(str));
-    store.dispatch(actions.changeScreen("0"));
-  }
-  render() {
-    let screen = null;
-    let menu = this.props.data.menu;
-    if (menu === "watch" || menu === "records") {
-      screen = (<EmbedScreen data={this.props.data} />);
-    }
-    else if (menu === "games") {
-      screen = (<ArticleScreen data={this.props.data} />);
-    }
-    else screen = (<ListScreen data={this.props.data} />);
-    return (
-      <div>
-        <div className="top half">
-          <div className="screen" id="topscreen">
-            {screen}
-          </div>
-        </div>
-        <div className="hinge" id="hinge">
-          <button className="lr right" id="lbtn" value="L">L </button>
-          <button className="lr left" id="rbtn" value="R">R</button>
-        </div>
-
-        <div className="bottom half flex-row">
-          <Dpad
-            changeMenu={this.setMenu}
-            changeScreen={this.setScreen} />
-          <div className="screen" id="bottomscreen">
-            <Menu
-              data={this.props.data}
-              changeScreen={this.setScreen} />
-          </div>
-          <Buttons
-            changeMenu={this.setMenu}
-            changeScreen={this.setScreen} />
-        </div>
-      </div>
-    );
-  }
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -86,7 +29,9 @@ class App extends React.Component {
   }
   componentDidMount() {
     let sequence = "";
+    const beep = document.getElementById("beep");
     $(".square, .round, .ctrl, .lr").on("click", el => {
+      if(this.state.sound) {beep.play();}
       sequence += el.currentTarget.value.toString();
       console.log(sequence);
 
