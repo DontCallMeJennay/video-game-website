@@ -2,6 +2,11 @@ import React from 'react';
 import './buttons';
 import './menus';
 
+/*
+Three different top screen layouts for different kinds of content.
+*/
+
+// Displays brief articles and images, such as game info articles, on top screen.
 class ArticleScreen extends React.Component {
   render() {
     let k = this.props.data.topview;
@@ -31,6 +36,7 @@ class ArticleScreen extends React.Component {
   }
 }
 
+// Displays contact info on top screen. Redundant?
 class ListScreen extends React.Component {
   render() {
     let topic = this.props.data.menu;
@@ -52,6 +58,7 @@ class ListScreen extends React.Component {
   }
 }
 
+// Video screen allowing embedded videos, links, and plain titles/text.
 class EmbedScreen extends React.Component {
   render() {
     let k = this.props.data.topview;

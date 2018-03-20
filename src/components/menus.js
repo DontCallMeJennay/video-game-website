@@ -3,6 +3,8 @@ import './screens';
 import './buttons';
 
 
+// Bottom screen layout and sound effects. TextMenu is only used for the home screens.
+
 class Menu extends React.Component {
     constructor(props) {
         super(props);

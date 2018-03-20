@@ -5,6 +5,9 @@ import $ from 'jquery';
 
 import '../css/dk.css';
 
+
+// TODO. When complete, this will handle sounds and theme changes. Might be combined with AudioHandler.
+
 export default class ThemeHandler extends React.Component {
     constructor(props) {
         super(props);

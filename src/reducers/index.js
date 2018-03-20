@@ -1,8 +1,15 @@
 const types = require('../actions/action_types');
 const Data = require('../data');
 
+/*
+Contact, events, games, records, watch:  Objects for display on various screens
+sound: Sound on/off
+menu: Info on bottom screen. Clicking links shows content on top screen.
+topview: Index that indicates which data item is showing on the top screen.
+style: Controls novelty styling that appears when cheat codes are entered.
+*/
+
 const initialState = {
-    bonus: "",
     contact: Data.contactObj,
     events: Data.eventObj,
     games: Data.gameObj,

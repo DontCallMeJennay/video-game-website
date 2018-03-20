@@ -6,6 +6,7 @@ import store from './store';
 
 import './css/style.css';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);

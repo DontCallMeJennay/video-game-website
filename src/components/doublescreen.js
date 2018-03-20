@@ -7,6 +7,14 @@ const actions = require('../actions/index');
 const dpadImg = require('../img/dpad.png');
 const buttonImg = require('../img/buttons.png');
 
+/*
+Top and bottom screen and control buttons. In UI, buttons are used to select a menu (bottom screen);
+an item that is selected on the menu shows on the top screen. IOW, pushing a button selects a prop (object),
+and selecting a menu item changes which part is being displayed on the top screen.  See data.js.
+
+Buttons can also be clicked/tapped to enter retro "cheat codes" to cause UI changes.
+*/
+
 
 export default class DoubleScreen extends React.Component {
     constructor(props) {
