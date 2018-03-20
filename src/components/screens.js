@@ -4,7 +4,6 @@ import './menus';
 
 class ArticleScreen extends React.Component {
   render() {
-    console.log("Showing ArticleScreen");
     let k = this.props.data.topview;
     let game = this.props.data.games[k];
     let text = null;
@@ -34,7 +33,6 @@ class ArticleScreen extends React.Component {
 
 class ListScreen extends React.Component {
   render() {
-    console.log("Showing ListScreen");
     let topic = this.props.data.menu;
     let div = null;
     if (this.props.data[topic]) {

@@ -9,7 +9,7 @@
 .dk .screen {
     color: red;
     font-size: 1.25rem;
-    transition: all 0.25s;
+    transition: all 0.25s font-size 0s;
 }
 
 .dk .screen h2 {

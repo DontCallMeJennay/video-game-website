@@ -119,7 +119,7 @@ const recordObj = [
 const watchObj = [
   {
     content: `Past streams, races, highlight reels, and bloopers!`,
-    title: `Vidya Videos`
+    title: `Videos`
   },
   {
     bottom: `Speedruns Live IRC channel`,

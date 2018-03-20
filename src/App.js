@@ -5,7 +5,6 @@ import ThemeHandler from './components/theme';
 import store from './store';
 
 import './css/style.css';
-import './css/dk.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,10 +29,12 @@ class App extends React.Component {
     }
   }
   listenForThemeChange() {
+    let app = document.getElementById("react-app");
     let prevState = this.state.style;
     let newState = store.getState();
     if (prevState.style !== newState.style) {
       this.setState(newState);
+      app.classList = this.state.style;
     }
   }
   render() {
