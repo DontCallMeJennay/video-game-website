@@ -1,0 +1,26 @@
+.dk .top,
+.dk .hinge,
+.dk .bottom {
+    background: none;
+    background-color: #FFD300;
+    transition: all 0.5s;
+}
+
+.dk .screen {
+    color: red;
+    font-size: 1.25rem;
+    transition: all 0.25s;
+}
+
+.dk .screen h2 {
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.dk .bottom button,
+.dk .hinge button {
+    background: none;
+    background-color: #C68F00;
+    border-color: brown;
+    color: white;
+}

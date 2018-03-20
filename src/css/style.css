@@ -147,7 +147,7 @@ button {
     border-color: #999;
     -webkit-box-shadow: 1px 2px #333;
     box-shadow: 1px 2px #333;
-    color: #999;
+    color: #CCC;
     cursor: pointer;
 }
 
@@ -159,8 +159,6 @@ button {
 }
 
 .round {
-    background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
-    background: linear-gradient(to bottom, #111, black);
     border: 1px solid #777;
     border-radius: 50px;
     font-weight: bold;
@@ -174,6 +172,7 @@ button {
     border-radius: 50px;
     font-size: 0.75em;
     font-variant: small-caps;
+    margin: 0.5em;
     padding: 0 1em;
 }
 
@@ -183,7 +182,7 @@ button {
     background: linear-gradient(to bottom, #111, black);
     border: 3px outset #777;
     border-radius: 10px;
-    color: #777;
+    color: #CCC;
     font-weight: bold;
     height: 5vh;
     margin: 0 2vw;
@@ -192,7 +191,7 @@ button {
 
 .invisible {
     border: none;
-    color: black;
+    color: rgba(0, 0, 0, 0);
 }
 
 .visible {
@@ -256,10 +255,6 @@ button {
     padding: 1em;
     padding-left: 0;
     padding-top: 0;
-}
-
-.dk {
-    background-color: yellow !important;
 }
 
 .tiny {

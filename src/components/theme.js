@@ -40,14 +40,7 @@ export default class ThemeHandler extends React.Component {
                 let dkc = document.getElementById("dkc");
                 dkc.play();
                 store.dispatch(actions.changeTheme(dkcTheme));
-                $("#tophalf").css({
-                    "background": "linear-gradient(#884, #FF2 5%, #FF2 95%, #884)",
-                    "backgroundColor": "#FF2"
-                });
-                $("#hinge, #bottomhalf").css({
-                    //"background": "none",
-                    //"backgroundColor": "#770"
-                });
+                $("#react-app").addClass("dk");
                 sequence = "";
             }
             if (sequence.length > 100) {

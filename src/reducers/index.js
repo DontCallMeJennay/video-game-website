@@ -11,7 +11,7 @@ const initialState = {
     sound: true,
     topview: 0,
     menu: "home",
-    theme: "default"
+    style: "default"
 }
 
 function Reducer(state = initialState, action) {

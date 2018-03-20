@@ -5,6 +5,7 @@ import ThemeHandler from './components/theme';
 import store from './store';
 
 import './css/style.css';
+import './css/dk.css';
 
 class App extends React.Component {
   constructor(props) {
